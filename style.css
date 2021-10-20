@@ -1,0 +1,262 @@
+:root {
+  --porcentagemvermelha: hsl(356, 69%, 56%);
+  --porcentagemverde: hsl(163, 72%, 41%);
+  /*Linhas redes sociais*/
+  --Facebook: hsl(208, 92%, 53%);
+  --Twitter: hsl(203, 89%, 53%);
+  --Instagram: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+  --YouTube: hsl(348, 97%, 39%);
+
+  /*Light Theme*/
+  --togle: hsl(230, 22%, 74%);
+  --BG: hsl(0, 0%, 100%);
+  --TopBGPattern: hsl(255, 100%, 98%);
+  --CardBG: hsl(227, 47%, 96%);
+  --BgDarkCardHover: hsl(227, 32%, 86%);
+  --WhiteText: hsl(230, 17%, 14%);
+  --BlueText: hsl(228, 12%, 44%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body.dark {
+  --togle: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  --BG: hsl(230, 17%, 14%);
+  --TopBGPattern: hsl(232, 19%, 15%);
+  --CardBG: hsl(228, 28%, 20%);
+  --BlueText: hsl(228, 34%, 66%);
+  --WhiteText: hsl(0, 0%, 100%);
+  --BgDarkCardHover: hsl(227, 26%, 26%);
+}
+
+body {
+  background: var(--BG);
+  font-family: "Inter", sans-sherif;
+  color: var(--WhiteText);
+  font-size: 14px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5em 0;
+}
+
+header .title p {
+  color: var(--BlueText);
+  font-weight: 700;
+}
+
+header .toggle {
+  display: flex;
+  align-items: center;
+  color: var(--BlueText);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.toggle input[type="checkbox"] {
+  -webkit-appearance: none;
+  width: 90px;
+  height: 40px;
+  background: var(--togle);
+  border-radius: 100px;
+  margin-left: 20px;
+  cursor: pointer;
+  outline: 0;
+  position: relative;
+}
+
+.toggle input[type="checkbox"]::before {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  content: "";
+  background: var(--TopBGPattern);
+  position: absolute;
+  transform: translateX(50px) scale(0.8);
+  transition: translateX, 200ms ease-in-out;
+}
+
+.toggle input[type="checkbox"]:checked::before {
+  transform: translateX(0) scale(0.8);
+}
+
+main .followers,
+main .grid-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+
+main .overview {
+  margin-top: 50px;
+}
+
+main .overview h2 {
+  color: var(--WhiteText);
+  font-size: 1.7em;
+}
+
+.grid-overview {
+  margin: 20px 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--CardBG);
+  position: relative;
+}
+
+.card:hover {
+  background: var(--BgDarkCardHover);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-radius: 8px 8px 0 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.card.facebook::before {
+  background: var(--Facebook);
+}
+
+.card.twitter::before {
+  background: var(--Twitter);
+}
+
+.card.instagram::before {
+  background: var(--Instagram);
+}
+
+.card.youtube::before {
+  background: var(--YouTube);
+}
+
+.card .user {
+  display: flex;
+  justify-content: center;
+  color: var(--BlueText);
+}
+
+.card .user img {
+  margin-right: 10px;
+}
+
+.card .count-follow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+  font-size: 1.1em;
+  font-weight: 400;
+  letter-spacing: 5px;
+  color: var(--BlueText);
+}
+
+.card .count-follow span {
+  font-size: 4em;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--WhiteText);
+}
+
+.card span {
+  display: flex;
+  align-items: center;
+  color: var(--porcentagemverde);
+  font-weight: 700;
+}
+
+.card span img {
+  margin-right: 5px;
+}
+
+.card span.down {
+  display: flex;
+  align-items: center;
+  color: var(--porcentagemvermelha);
+  font-weight: 700;
+}
+
+.grid-overview .card .title-card {
+  margin-bottom: 20px;
+}
+
+.grid-overview .card .title-card span {
+  font-size: 1.1em;
+  color: var(--BlueText);
+}
+
+.grid-overview .card .title-card,
+.grid-overview .card .text-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.grid-overview .card .text-card {
+  align-items: baseline;
+}
+
+.grid-overview .card .text-card p {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--WhiteText);
+}
+
+@media (max-width: 800px) {
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    border-bottom: 1px solid var(--BlueText);
+  }
+
+  header .toggle {
+    padding: 20px 0 0 0;
+  }
+
+  main {
+    display: grid;
+  }
+
+  main .followers,
+  main .grid-overview {
+    display: flex;
+    flex-direction: column;
+  }
+}
